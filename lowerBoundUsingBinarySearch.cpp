@@ -9,7 +9,11 @@ int lowerBound(int arr[], int key, int low, int high) {
 	int middle = (low+high)/2;
 
 	if(key == arr[middle]) {
-		return middle;
+		int index = middle;
+		while(index >-1 && arr[index] == key) {
+			index--;
+		}
+		return ++index;
 	}
 
 	if(arr[middle] > key) {
@@ -21,9 +25,9 @@ int lowerBound(int arr[], int key, int low, int high) {
 
 
 int main() {
-	int arr[] = {1,2,3,4,5,5,6,8};
+	int arr[] = {1,2,4,5,5,5,6,8,9,10};
 	int n = sizeof(arr)/sizeof(arr[0]);
-	int key = 6;
+	int key = 3;
 	int index = lowerBound(arr,key,0,n-1);
 	if(index == n){
 		cout << -1 << "\n";
